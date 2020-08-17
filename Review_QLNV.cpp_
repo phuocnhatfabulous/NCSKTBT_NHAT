@@ -1,0 +1,108 @@
+#include <conio.h>
+#include <iostream.h>
+#include <string.h>
+#include <iomanip.h>
+class NhanVien{
+    public:
+    	float  phucap;
+        float  lcb;
+        float  tu;
+    	char hoten[32];
+   	 	void Nhap();
+     	void In();
+      	float thuclinh();
+}; // Ket thuc lop NhanVien
+
+void NhanVien::Nhap() {
+   cout<<"\n   Ho ten: ";cin.ignore(); gets(hoten);
+   cout<<"   Phu cap: "; cin>>phucap;
+   cout<<"   Luong can ban: ";cin>>lcb;
+   cout<<"   Tam ung: ";cin>>tu;
+}
+
+// Ham xuat thong tin cua nhan vien
+void NhanVien::In(){
+	cout<<"-----------------------------------------------------------------------------\n";
+	cout<<"|      Ho ten      |   Phu cap  | Luong can ban |   Tam ung   |   Thuc linh | \n";
+	cout<<"-----------------------------------------------------------------------------\n";
+	cout<<setw(15)<<hoten;
+ 	cout<<setw(12)<<phucap;
+  	cout<<setw(12)<<lcb;
+   	cout<<setw(12)<<tu;
+    cout<<setw(12)<<thuclinh();
+}
+
+// Ham tinh so tien thuc linh cua nhan vien
+float NhanVien::thuclinh(){
+	return (phucap+lcb-tu);
+}
+
+// Chuong trinh chinh
+int main(){
+ 	int n, i, chon;
+	NhanVien*dsnv, *lop;
+	
+	// Xay dung menu chuong trinh
+do{
+ 		cout<< "\n CHUONG TRINH QUAN LY TUYEN SINH ";
+   		cout<< "\n  1. Nhap danh sach nhan vien";
+     	cout<< "\n  2. In thong tin nhan vien ";
+		cout<< "\n  3. Nhan vien co thuc linh cao nhat ";
+  		cout<< "\n  4. Tim kiem ";
+    	cout<< "\n  5. Thoat ";
+		cout<< "\n  Ban chon? ";
+		cin>>chon;
+}while(chon==5);
+
+switch(chon){
+	case 1:{
+ 		cout<<"\n Nhap vao so nhan vien: ";
+   		cin>>n;
+   	//	break;
+	}
+  case 2:{
+	//Nhap danh sach nhan vien
+	cout<<"\n NHAP VAO THONG TIN CUA "<<n<< " NHAN VIEN";
+ 	lop=new NhanVien[n+1];
+ 	for( i=1;i<=n;i++){
+ 		cout<<"\n Nhan vien thu: "<<i;
+ 		lop[i].Nhap();
+	 }
+ //	break;
+ 	}
+ case 3:{
+ 	cout<<endl<<endl;
+ 	cout<<"\n        ****************************************************************** \n";
+ 	cout<<"\n Nhan vien co thuc linh cao nhat la: \n";
+	float max=lop[1].thuclinh();
+ 	for(i=1;i<=n;i++)
+  		if (lop[i].thuclinh()>max)
+			max=lop[i].thuclinh();
+	for (i=1;i<=n;i++)
+		if(lop[i].thuclinh()==max)
+  		lop[i].In();
+  	//break;
+  	}
+  case 4:{
+  	int k=0;
+   	char ten[32];
+   	cout<<endl<<endl;
+cout<<"\n        ****************************************************************** \n";
+    cout<<"\n Nhap ten nhan vien can tim: " ; 
+	cin.ignore(); gets(ten);
+    cout<<"\n Co thong tin day du nhu sau: \n";
+	for(i=1;i<=n;i++)
+    	if(strncmp(lop[i].hoten,ten, strlen(ten))==0){
+     		lop[i].In();
+			k=i;
+			break;
+   		}
+ 	if(k==0){
+	 	cout<<"\n khong tim thay";
+	}
+	break;
+	}
+   }
+ return 0;
+ cin.ignore(2);
+}
