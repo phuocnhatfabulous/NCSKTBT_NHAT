@@ -7,8 +7,8 @@ private:
 public:
     SoPhuc();//ham khoi tao
     ~SoPhuc();//ham huy
-    void set(); //ham set: thiet lap gia tri
-    void get(); // ham get: lay gia tri ra su dung
+    void Nhap(); //ham set: thiet lap gia tri
+    void Xuat(); // ham get: lay gia tri ra su dung
     void KQ_Cong();
     void KQ_Tru();
     friend SoPhuc cong(SoPhuc, SoPhuc);
@@ -22,13 +22,13 @@ SoPhuc::SoPhuc(){
 //Ham huy
 SoPhuc::~SoPhuc(){
 }
-void SoPhuc::set() {
+void SoPhuc::Nhap() {
    cout << "Nhap phan thuc: ";
    cin >> a;
    cout << "Nhap phan ao: ";
    cin >> b;
 }
-void SoPhuc::get() {
+void SoPhuc::Xuat() {
    cout << "Gia tri so phuc: "<< a << "+" << b << "i" << endl;
 }
 void SoPhuc::KQ_Cong() {
@@ -70,10 +70,10 @@ SoPhuc tru(SoPhuc sp1, SoPhuc sp2) {
 int main() {
    SoPhuc n1, n2;
    SoPhuc kq;
-    n1.set();
-    n1.get();
-    n2.set();
-    n2.get();
+    n1.Nhap();
+    n1.Xuat();
+    n2.Nhap();
+    n2.Xuat();
    kq = cong(n1,n2);
    kq.KQ_Cong();
    kq = tru(n1,n2);
