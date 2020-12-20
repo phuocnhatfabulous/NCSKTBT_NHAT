@@ -7,8 +7,8 @@ private:
 public:
     SoPhuc();//ham khoi tao
     ~SoPhuc();//ham huy
-    void Nhap(); //ham set: thiet lap gia tri
-    void Xuat(); // ham get: lay gia tri ra su dung
+    void Nhap();
+    void Xuat(); 
     void KQ_Cong();
     void KQ_Tru();
     friend SoPhuc cong(SoPhuc, SoPhuc);
